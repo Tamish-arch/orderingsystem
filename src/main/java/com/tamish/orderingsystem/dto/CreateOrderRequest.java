@@ -11,8 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateOrderRequest {
-	@NotBlank
-    private String customer;
+	
 	@NotEmpty
 	@Valid
     private List<OrderItemRequest> items;
