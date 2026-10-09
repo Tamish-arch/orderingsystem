@@ -28,4 +28,10 @@ public class GlobalExceptionHandler {
         ErrorResponse body = new ErrorResponse(message, HttpStatus.BAD_REQUEST.value(), LocalDateTime.now());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
+    
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ErrorResponse> handleConflict(ConflictException e) {
+        ErrorResponse body = new ErrorResponse(e.getMessage(), HttpStatus.CONFLICT.value(), LocalDateTime.now());
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
 }
