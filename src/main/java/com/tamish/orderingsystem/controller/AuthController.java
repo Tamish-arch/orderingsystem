@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tamish.orderingsystem.dto.AuthResponse;
+import com.tamish.orderingsystem.dto.LoginRequest;
 import com.tamish.orderingsystem.dto.RegisterRequest;
 import com.tamish.orderingsystem.dto.UserResponse;
 import com.tamish.orderingsystem.service.AuthService;
@@ -24,5 +26,9 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(@Valid @RequestBody RegisterRequest request) {
         return new ResponseEntity<>(authService.register(request), HttpStatus.CREATED);
+    }
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        return new ResponseEntity<>(authService.login(request), HttpStatus.OK);
     }
 }
